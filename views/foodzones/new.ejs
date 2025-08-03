@@ -1,0 +1,55 @@
+<% layout('layouts/boilerplate') %>
+
+    <div class="col-12 col-md-6 offset-md-3">
+        <div class="card shadow mb-3">
+            <div class="card-body ">
+                <form action="/foodzones" method="POST" novalidate class="validated-form "
+                    enctype="multipart/form-data">
+                    <h2 class="text-center">Add a Foodzone</h2>
+
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" name="foodzone[name]" placeholder="Food Zone"
+                        autofocus required>
+                        <div class="valid-feedback">
+                            Looks Good!
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="location" class="form-label">Location</label>
+                        <input type="text" class="form-control" id="location" name="foodzone[location]"
+                            placeholder="Place" required>
+                        <div class="valid-feedback">
+                            Looks Good!
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="avgprice" class="form-label">Price Range (INR)</label>
+                        <input type="text" class="form-control" id="avgPrice" name="foodzone[avgPrice]"
+                            placeholder="XXX - XXX" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea class="form-control" id="description" rows="3" name="foodzone[description]"
+                            placeholder="Tell about special offers, best dish and other unique features"
+                            required></textarea>
+                        <h10 class="text-muted">* Content is optimized for consistent professional tone.</h10>
+
+                    </div>
+                    <div class="mb-3">
+                        <div class="mb-3">
+                            <label for="image" class="form-label">Upload Image(s)</label>
+                            <input class="form-control" type="file" id="image" name="image" multiple>
+                        </div>
+                    </div>
+                    <div class="d-grid">
+                    <button class="btn btn-dark">Add Foodzone</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,38 @@
+<% layout('layouts/boilerplate') %>
+<div class="col-12 col-md-6 offset-md-3">
+    <h2>Edit Your Profile</h2>
+    <form action="/user/<%= user.id %>/editprofile?_method=PUT" method="post" class="validated-form" enctype="multipart/form-data" novalidate>
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" value="<%= user.name %>"
+                required>
+            <div class="valid-feedback">
+                Looks Good!
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="username" class="form-label">User Name</label>
+            <input type="text" class="form-control" id="username" name="username" value="<%= user.username %>"
+                required disabled>
+            <div class="valid-feedback">
+                Looks Good!
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Yourmail@email.com" value="<%= user.email %>"
+                required>
+            <div class="valid-feedback">
+                Looks Good!
+            </div>
+        </div>
+        <div class="mb-3">
+                <div class="mb-3">
+                    <label for="image" class="form-label">Add your profile picture</label>
+                    <input class="form-control" type="file" id="image" name="image">
+                </div>
+        </div>
+        <button class="btn btn-success">Update</button>
+    </form>
+
+</div>

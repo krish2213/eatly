@@ -1,0 +1,69 @@
+<% layout('layouts/boilerplate') %>
+<div class="col-12 col-md-6 offset-md-3">
+  <h1 class="text-center my-4">
+        <% if (q && foodzones.length > 0) { %>
+            Search Results for "<%= q %>"
+        <% } else if (q && foodzones.length === 0) { %>
+            No Foodzones Found for "<%= q %>"
+        <% } else { %>
+            All Foodzones Around You!
+        <% } %>
+    </h1>
+
+    <% if (q) { %>
+        <p class="text-center mb-4">
+            <a href="/foodzones" class="btn btn-outline-secondary rounded-pill btn-sm">Clear Search & View All Foodzones</a>
+        </p>
+    <% } %>
+
+    <% if (foodzones.length === 0 && q) { %>
+        <div class="alert alert-info text-center" role="alert">
+            We couldn't find any foodzones matching "<%= q %>". Please try a different search.
+        </div>
+    <% } %>
+  
+
+  <% for (let i = 0; i < foodzones.length; i++) {
+     let foodzone = foodzones[i];
+     let isEven = i % 2 === 1; 
+%>
+  <div class="card mb-4 shadow-sm rounded">
+    <div class="row g-0 flex-md-row <%= isEven ? 'flex-md-row-reverse' : '' %>">
+      
+      <div class="col-md-4 d-flex align-items-center justify-content-center">
+        <% if (foodzone.images && foodzone.images.length > 0) { %>
+          <img crossorigin="anonymous" src="<%= foodzone.images[0].url %>"
+               alt="<%= foodzone.name %> image"
+               class="img-fluid rounded"
+               style="width: 100%;height: 100%;  object-fit: cover; border-radius: 12px;">
+        <% } else { %>
+          <img src="/images/placeholder.jpeg"
+               alt="No image available for <%= foodzone.name %>"
+               class="img-fluid rounded"
+               style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+        <% } %>
+      </div>
+
+      <div class="col-md-8">
+        <div class="card-body">
+          
+          <div class="card-title d-flex">
+            <h5><%= foodzone.name %></h5>
+            <%if(foodzone.reviews.length>0){%>
+            <div class="ms-auto"><%=foodzone.avgRating.toFixed(1)%> <i class="fa-solid fa-star text-warning"></i></div>
+            <%}else{%>
+              <div class="ms-auto text-muted">No Reviews yet</div>
+            <%}%>
+          </div>
+          
+          <p class="card-text text-muted mb-1"><%= foodzone.description %></p>
+          <p class="card-text"><small class="text-muted">📍 <%= foodzone.location %></small></p>
+          <a href="/foodzones/<%= foodzone._id %>" class="btn btn-outline-dark mt-2 rounded-pill">View <%= foodzone.name %></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+<% } %>
+
+</div>

@@ -1,0 +1,67 @@
+<% layout('layouts/boilerplate') %>
+    <div class="container justify-content-center align-items-center mt-3">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4 mt-0">
+                <div class="card shadow">
+                    <div class="card bg-dark justify-content-center align-items-center" style="width: 100%;height: 50px;">
+                        <h3 class="text-centre text-white">Eatly</h3>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h5 class="text-center">Sign Up</h5>
+                            
+                        </div>
+
+                        <form action="/register" method="post" class="validated-form" enctype="multipart/form-data"
+                            novalidate>
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Your Name"
+                                    required>
+                                <div class="valid-feedback">
+                                    Looks Good!
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="username" class="form-label">User Name</label>
+                                <input type="text" class="form-control" id="username" name="username"
+                                    placeholder="Username" required>
+                                <div class="valid-feedback">
+                                    Looks Good!
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" name="email"
+                                    placeholder="Yourmail@email.com" required>
+                                <div class="valid-feedback">
+                                    Looks Good!
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Create Password</label>
+                                <input type="password" class="form-control" id="password" name="password"
+                                    placeholder="Password" required autocomplete="off">
+                                <div class="valid-feedback">
+                                    Looks Good!
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="mb-3">
+                                    <label for="image" class="form-label">Add your profile picture</label>
+                                    <input class="form-control" type="file" id="image" name="image">
+                                </div>
+                            </div>
+                            <div class="d-grid">
+                                <button class="btn btn-dark">Register</button>
+                            </div>
+                            
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    

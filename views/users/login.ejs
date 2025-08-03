@@ -1,0 +1,43 @@
+<% layout('layouts/boilerplate') %>
+    <div class="container justify-content-center align-items-center mt-3">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4 mt-0">
+                    <div class="card shadow">
+                    <img src="/images/login.png" class="card-img-top img-fluid">
+                    
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h5>Log In</h5>
+                        </div>
+                
+                        <form action="/login" method="post" class="validated-form" novalidate>
+                            <div class="mb-3">
+                                <label for="username" class="form-label">User Name</label>
+                                <input type="text" class="form-control" id="username" name="username" placeholder="Username"
+                                autofocus required>
+                                <div class="invalid-feedback">
+                                    Username Required!
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password" name="password"
+                                placeholder="Password" required autocomplete="off">
+                                <div class="invalid-feedback">
+                                Password Required!
+                                </div>
+                            </div>
+                            <div class="d-grid">
+                                <button class="btn btn-dark btn-block">Login</button>
+                            </div>
+                           
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+  

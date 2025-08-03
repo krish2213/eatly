@@ -1,0 +1,85 @@
+<%layout('layouts/boilerplate') %>
+
+    <div class="col-12 col-md-8 col-lg-6 offset-md-2 offset-lg-3">
+        <div class="card text-center rounded mb-4">
+            <div class="card-body d-block d-sm-flex">
+                <div class="d-flex flex-column flex-md-row align-items-center gap-3 gap-md-5">
+                        <% if (user.picture && user.picture.url) { 
+                        if (user.picture.fileName && user.picture.fileName !=='NoProfile.jpg' ) 
+                        { 
+                            const originalUrl=user.picture.url; 
+                            const parts=originalUrl.split('/upload/');
+                            profileImageUrl=`${parts[0]}/upload/w_200,h_200,c_fill/${parts[1]}`; 
+                        } else {
+                            profileImageUrl=user.picture.url; 
+                        } } %>
+                        <img crossorigin="anonymous" src="<%= profileImageUrl %>" class="rounded-circle"
+                            style="width: 120px; height: 120px; object-fit: cover;"
+                            alt="<%= user.username %>'s profile picture">
+
+                        <div class="text-center  mt-3 mt-md-0">
+                            <h4 class="card-title mb-1">
+                                <%= user.name %>
+                            </h4>
+                            <h6 class="card-text mb-1 text-muted">
+                                @<%= user.username %>
+                            </h6>
+                        </div>
+
+                        <div class="card text-white bg-dark mb-3 shadow-sm" style="max-width: 18rem;">
+                            <div class="card-body text-center">
+                                <h5 class="card-title fw-bold mb-0">
+                                    <%= user.posts.length%>
+                                </h5>
+                                <p class="card-text">Posts</p>
+                            </div>
+                        </div>
+
+                </div>
+
+                <%if(currentUser && currentUser.id===user.id){%>
+                    <div class="ms-auto mb-5 mt-2 d-flex flex-column">
+                        <div class="dropdown mb-3">
+                            <a class="btn btn-dark" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <i class="fa fa-cogs me-1" aria-hidden="true"></i>Actions
+                            </a>
+
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/user/<%=user.id%>/editprofile">Edit Profile</a></li>
+                                <li><form action="/user/<%=user.id%>?_method=DELETE" method="POST"><button class="dropdown-item text-danger">Delete Profile</button></form></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <a href="/foodzones/new" class="btn btn-dark"><i class="fa fa-plus-square"
+                                    aria-hidden="true"></i> Create</a>
+
+                        </div>
+                    </div>
+                    <%} %>
+
+            </div>
+        </div>
+
+        <div class="mt-4 mb-4">
+
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                <% for(let post of user.posts){ %>
+                    <div class="col">
+                        <div class="d-flex flex-column align-items-center">
+                            <div class="img-thumbnail" style="width: 200px; height: 200px;">
+                                <img crossorigin="anonymous" src="<%= post.images[0].url %>" class="img-fluid h-100 w-100"
+                                    style="object-fit: cover;" alt="Post image">
+                            </div>
+                            <a href="/foodzones/<%=post.id%>" class="mt-2">
+                                <button class="btn btn-dark" style="width: 200px;">
+                                    <%= post.name %>
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                    <% } %>
+            </div>
+        </div>
+    </div>
+
