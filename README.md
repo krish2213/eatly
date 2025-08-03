@@ -79,5 +79,5 @@ GEMINI_API_KEY=<your_gemini_key>
 ```bash
 npm install
 ```
-🤝 Contributing
+### 🤝 Contributing
 We welcome feature ideas, improvements, and bug fixes. Feel free to open an issue or pull request.
