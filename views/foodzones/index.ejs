@@ -4,7 +4,7 @@
         <% if (q && foodzones.length > 0) { %>
             Search Results for "<%= q %>"
         <% } else if (q && foodzones.length === 0) { %>
-            No Foodzones Found for "<%= q %>"
+            No Data Found for "<%= q %>"
         <% } else { %>
             All Foodzones Around You!
         <% } %>
@@ -18,7 +18,7 @@
 
     <% if (foodzones.length === 0 && q) { %>
         <div class="alert alert-info text-center" role="alert">
-            We couldn't find any foodzones matching "<%= q %>". Please try a different search.
+            We couldn't find any data matching "<%= q %>". Please try a different search.
         </div>
     <% } %>
   
